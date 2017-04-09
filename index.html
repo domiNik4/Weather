@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Weather forecast</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.min.js"></script>
+	<script src="js/moment.js"></script>
+	<script src="js/script.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/colorTheme.css">
+</head>
+
+<body class="w3-theme-l1">
+	<div class="w3-row">
+		<div class="w3-rest w3-theme-d5 w3-card-2">
+			<img src="img/poweredby-darkbackground.png" class="poweredby">
+			<h1 class="heading">Weather Forecast</h1>
+		</div>
+	</div>
+	<div class="w3-row">
+
+	</div>
+
+	<div class="w3-row selectContainer">
+	<div class="w3-quarter">
+	</div>
+		<div class="w3-half">
+			<!--<h4>Choose a country:</h4>-->
+			<select id="countrySelect" class="w3-theme-d5">
+				<option value="choose"> Choose a country </option>
+				<option value="austria">Austria</option> 
+				<option value="poland">Poland</option>
+				<option value="slovakia">Slovakia</option>
+			</select>
+		</div>
+	<div class="w3=quarter">
+	</div>
+	</div>
+
+	<div class="w3-row content">
+		<div class="w3-content content w3-card-2 w3-theme-l4" id="cities-content">
+		<!--append cities here-->
+
+		</div>
+
+	</div>
+
+
+</body>
+
+</html>
