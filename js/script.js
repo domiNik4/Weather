@@ -15,9 +15,6 @@ $(document).ready(function(){
   	}
 });
 
-
- 
-	
 	function requestForecast(lon,lat){
 		$.ajax({
 			url:"https://api.darksky.net/forecast/8b23ae714d4a62ddc3da552f4314e302/"+lat+","+lon,
@@ -35,11 +32,20 @@ $(document).ready(function(){
 					"<div>Cloud cover: "+data.currently.cloudCover+"</div>"+
 					"<div>Dew point: "+data.currently.dewPoint+"</div>"+
 					"<div>Humidity: "+data.currently.humidity+"</div>"+
+					"<div>Wind speed: "+data.currently.windSpeed+"</div>"+
+					"<div>Pressure: "+data.currently.pressure+"</div>"+
 					"</div>");
-				$("#thisweek").append(
-					"<h2>This week</h2>"+
-						"To be updated"
+				$("#thisweek").append("<h2>This week</h2>");
+				for(var i=0;i<8;i++){
+					$("#thisweek").append(
+						"<div>"+
+						"<h5><b>"+moment.unix(data.daily.data[i].time).format("DD.MM.YYYY")+"</b></h5>"+
+						"<div>"+((data.daily.data[i].temperatureMax-32)*0.5556).toFixed(1)+"°C</div>"+
+						"<div><i>"+data.daily.data[i].summary+"</i></div>"+
+						"</div>"
 					);
+
+				}
 		});
 
 	}
