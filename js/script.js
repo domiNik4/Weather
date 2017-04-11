@@ -23,6 +23,7 @@ $(document).ready(function(){
 			console.log(data);
 			var skycons = new Skycons({"color": "#6888b1"});
 			$(".forecast").remove();
+			$(".small").remove();
 				$("#today").append("<div class='forecast'>"+
 					"<h2>Today</h2>"+
 					'<div>Zone: '+data.timezone+'</div>'+
@@ -36,11 +37,11 @@ $(document).ready(function(){
 					"<div>Pressure: "+data.currently.pressure+"</div>"+
 					'<canvas id="icon" width="100" height="100"></canvas>'+
 					"</div>");
-				skycons.set("icon",data.currently.icon);
 
 				for(var i=1;i<8;i++){
+					
 					$("#thisweek").append(
-						"<div class='weekly w3-card-2 w3-theme-d4'>"+
+						"<div class='weekly small w3-card-2 w3-theme-d4'>"+
 						"<h5><b>"+moment.unix(data.daily.data[i].time).format("DD.MM.YYYY")+"</b></h5>"+
 						"<div>"+((data.daily.data[i].temperatureMax-32)*0.5556).toFixed(1)+"°C</div>"+
 						'<canvas id="icon'+i+'" width="100" height="100"></canvas>'+
@@ -49,6 +50,7 @@ $(document).ready(function(){
 					);
 					skycons.set("icon"+i,data.daily.data[i].icon);
 				}
+				skycons.set("icon",data.currently.icon);
 				skycons.play();
 		});
 
