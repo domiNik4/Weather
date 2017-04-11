@@ -3,6 +3,10 @@
 	text-align:center;
 }
 
+#map{
+	margin-bottom:20px;
+}
+
 .selectContainer{
 	padding-top:20px;
 	padding-left:5%;
@@ -21,10 +25,6 @@ h4{
 	float:left;
 }
 
-h2{
-	color:#6888b1;
-}
-
 #countrySelect{
 	padding:5px;
 	border:none;
@@ -36,6 +36,7 @@ h2{
 	padding:5%;
 	padding-top:10px;
 	margin-top:20px;
+	min-width:100%;
 }
 
 .w3-content{
@@ -48,10 +49,14 @@ h2{
 	float:right;
 }
 
-.footer{
 
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: #efefef;
+#thisweek{
+	position:relative;
+}
+
+.weekly{
+	position:relative;
+	float:left;
+	padding:10px;
+	margin:10px;
 }

@@ -10,7 +10,6 @@ $(document).ready(function(){
   		click: function(e) {
   		var longitude = (map.getCenter().lng()).toFixed(4);
 		var latitude = (map.getCenter().lat()).toFixed(4);
-    	alert(longitude+" "+latitude);
     	requestForecast(longitude,latitude);
   	}
 });
@@ -22,6 +21,7 @@ $(document).ready(function(){
 			method:"GET"
 		}).done(function(data){
 			console.log(data);
+			var skycons = new Skycons({"color": "#6888b1"});
 			$(".forecast").remove();
 				$("#today").append("<div class='forecast'>"+
 					"<h2>Today</h2>"+
@@ -34,18 +34,22 @@ $(document).ready(function(){
 					"<div>Humidity: "+data.currently.humidity+"</div>"+
 					"<div>Wind speed: "+data.currently.windSpeed+"</div>"+
 					"<div>Pressure: "+data.currently.pressure+"</div>"+
+					'<canvas id="icon" width="100" height="100"></canvas>'+
 					"</div>");
-				$("#thisweek").append("<h2>This week</h2>");
-				for(var i=0;i<8;i++){
+				skycons.set("icon",data.currently.icon);
+
+				for(var i=1;i<8;i++){
 					$("#thisweek").append(
-						"<div>"+
+						"<div class='weekly w3-card-2 w3-theme-d4'>"+
 						"<h5><b>"+moment.unix(data.daily.data[i].time).format("DD.MM.YYYY")+"</b></h5>"+
 						"<div>"+((data.daily.data[i].temperatureMax-32)*0.5556).toFixed(1)+"°C</div>"+
+						'<canvas id="icon'+i+'" width="100" height="100"></canvas>'+
 						"<div><i>"+data.daily.data[i].summary+"</i></div>"+
 						"</div>"
 					);
-
+					skycons.set("icon"+i,data.daily.data[i].icon);
 				}
+				skycons.play();
 		});
 
 	}
